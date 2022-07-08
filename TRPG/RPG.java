@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class RPG {
+public class User {
 
 
     String name;
