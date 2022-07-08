@@ -5,14 +5,14 @@ public class Starcraft {
         System.out.println("스타를 시작합니다.");
 
         System.out.println("자신의 유닛 정보를 입력해주세요.");
-        RPG user = new RPG();
+        User user = new User();
 
         String[] user_info = new String[4];
         user_info = user.user_create();ß
         user.user_print(user_info);
 
         System.out.println("상대 유닛 정보를 입력해 주세요");
-        RPG user2 = new RPG();
+        User user2 = new User();
         String[] user2_info = new String[4];
         user2_info = user2.user_create();
         user2.user_print(user2_info);
