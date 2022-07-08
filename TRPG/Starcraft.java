@@ -1,6 +1,6 @@
 import com.sun.security.jgss.GSSUtil;
 
-public class Main {
+public class Starcraft {
     public static void main(String[] args) {
         System.out.println("스타를 시작합니다.");
 
