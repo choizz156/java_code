@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class User {
+public class RPG {
 
 
     String name;
@@ -71,35 +71,36 @@ public class User {
     }
 
     int attack(int[] myinfo, int[] enemyinfo) {
-        int myhp = myinfo[2], enhp = enemyinfo[2];
-        int myatt = myinfo[0], enatt = enemyinfo[0];
-        int mydef = myinfo[1], endef = enemyinfo[1];
+
         String unitName = this.name;
 
-        while (enhp > 0) {
+        if (enemyinfo[2] > 0) {
             System.out.println(unitName + "유닛이 공격하였습니다.");
-            enhp = enhp - (myatt / endef); // 적군 체력
-            System.out.println("상대 유닛의 남은 체력은" + enhp + "입니다.");
+            enemyinfo[2] = enemyinfo[2] - (myinfo[0] / enemyinfo[1]); // 적군 체력
+            double a = Math.floor(enemyinfo[2]);
+            if(a < 0){
+                return 0;
+            }
+            System.out.println("상대 유닛의 남은 체력은" + enemyinfo[2] + "입니다.");
             System.out.println("-----------------------");
+
         }
-        System.out.println(" 더 이상 공격할 수 없습니다.");
-        System.out.println("상대 유닛이 제거되었습니다.");
-        return -1;
+        return enemyinfo[2];
     }
-    int attack2(int[] enemyinfo, int[] myinfo){
-        int myhp = myinfo[2], enhp = enemyinfo[2];
-        int myatt = myinfo[0], enatt = enemyinfo[0];
-        int mydef = myinfo[1], endef = enemyinfo[1];
+    int attack2(int[] myinfo, int[] enemyinfo) {
+
         String unitName = this.name;
 
-        while (myhp > 0) {
-            System.out.println("적 " +unitName + " 유닛이 공격하였습니다.");
-            myhp = myhp - (enatt / mydef);
-            System.out.println("나의 유닛의 남은 체력은" + myhp + "입니다.");
+        if (myinfo[2] > 0) {
+            System.out.println("적 " + unitName + " 유닛이 공격하였습니다.");
+            myinfo[2] = myinfo[2] - (enemyinfo[0] / myinfo[1]);
+            double a = Math.floor(enemyinfo[2]);
+            if(a < 0){
+                return 0;
+            }
+            System.out.println("나의 유닛의 남은 체력은" + myinfo[2] + "입니다.");
             System.out.println("-----------------------");
         }
-        System.out.println(" 더 이상 공격할 수 없습니다.");
-        System.out.println(" 나의 유닛이 제거되었습니다.");
-        return -1;
+        return myinfo[2];
     }
 }
