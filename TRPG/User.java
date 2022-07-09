@@ -2,7 +2,7 @@ import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class RPG {
+public class User {
 
 
     String name;
@@ -48,18 +48,8 @@ public class RPG {
 
     }
 
+
     int[] user_info_int(String[] strs) {
-
-        int[] stress = new int[3];
-
-        for (int i = 0; i <= 2; i++) {
-            stress[i] = Integer.parseInt(strs[i + 1]);
-        }
-        return stress;
-
-    }
-
-    int[] enemy(String[] strs) {
         int[] chstrs = new int[3];
 
         for (int i = 0; i <= 2; i++) {
