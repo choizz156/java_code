@@ -1,16 +1,11 @@
-
 import java.util.Scanner;
 
 public class Users {
-
-
     String name;
     String att;
     String def;
     String hp;
-
     String[] input;
-
 
     void userInfo(String name, String att, String def, String hp) {
         this.name = name;
@@ -51,7 +46,6 @@ public class Users {
 
     }
 
-
     int[] userInfoInt(String[] strs) {
         int[] chstrs = new int[3];
 
@@ -59,11 +53,8 @@ public class Users {
             chstrs[i] =
                     Integer.parseInt(strs[i + 1]);
         }
-
         return chstrs;
     }
-
-
 
     public int[] list() {
         int[] list = new int[3];
@@ -72,8 +63,6 @@ public class Users {
         return list;
     }
 
-
-
     int attack(int[] myinfo, int[] enemyinfo) {
 
         String unitName = this.name;
@@ -81,8 +70,8 @@ public class Users {
         if (enemyinfo[2] > 0) {
             System.out.println(unitName + "유닛이 공격하였습니다.");
             enemyinfo[2] = enemyinfo[2] - (myinfo[0] / enemyinfo[1]); // 적군 체력
-            int a =(int)Math.floor(enemyinfo[2]);
-            if(a <= 0){
+            int a = (int) Math.floor(enemyinfo[2]);
+            if (a <= 0) {
                 System.out.println("상대 유닛의 남은 체력은 0입니다.");
                 System.out.println("상대 유닛이 죽었습니다.");
                 return 0;
@@ -93,6 +82,7 @@ public class Users {
         }
         return enemyinfo[2];
     }
+
     int attack2(int[] myinfo, int[] enemyinfo) {
 
         String unitName = this.name;
@@ -100,8 +90,8 @@ public class Users {
         if (myinfo[2] > 0) {
             System.out.println("적 " + unitName + " 유닛이 공격하였습니다.");
             myinfo[2] = myinfo[2] - (enemyinfo[0] / myinfo[1]);
-            int a = (int)Math.floor(myinfo[2]);
-            if(a < 0){
+            int a = (int) Math.floor(myinfo[2]);
+            if (a < 0) {
                 System.out.println("나의 남은 체력은 0입니다.");
                 System.out.println("나 유닛이 죽었습니다.");
                 return 0;

@@ -5,6 +5,5 @@ public class User2 extends Users {
         user2Info = userCreate();
         userPrint(user2Info);
     }
-
 }
 
