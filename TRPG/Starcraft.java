@@ -8,7 +8,7 @@ public class Starcraft {
         User user = new User();
 
         String[] user_info = new String[4];
-        user_info = user.user_create();ß
+        user_info = user.user_create();
         user.user_print(user_info);
 
         System.out.println("상대 유닛 정보를 입력해 주세요");

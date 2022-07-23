@@ -30,6 +30,8 @@ public class Starcraft1 {
 
 
     }
+
+    
 }
 // 배열
 // this 사용

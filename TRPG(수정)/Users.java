@@ -1,5 +1,4 @@
-import java.sql.SQLOutput;
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class Users {
@@ -13,33 +12,35 @@ public class Users {
     String[] input;
 
 
-    void user_info(String name, String att, String def, String hp) {
+    void userInfo(String name, String att, String def, String hp) {
         this.name = name;
         this.att = att;
         this.def = def;
         this.hp = hp;
+        String[] userInput = {name, att, def, hp};
+        this.input = userInput;
     }
 
-    String[] user_create() {
+    String[] userCreate() {
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("유닛 이름을 입력해 주세요.");
-        String name = scanner.nextLine();
+        String unitName = scanner.nextLine();
         System.out.print("유닛 공격력을 입력해 주세요.");
-        String att = scanner.nextLine();
+        String unitAtt = scanner.nextLine();
         System.out.print("유닛 방어력을 입력해 주세요.");
-        String def = scanner.nextLine();
+        String unitDef = scanner.nextLine();
         System.out.print("유닛 체력을 입력해 주세요.");
-        String hp = scanner.nextLine();
+        String unitHp = scanner.nextLine();
 
-        this.user_info(name, att, def, hp);
+        String[] userInput = {unitName, unitAtt, unitDef, unitHp};
+        this.userInfo(unitName, unitAtt, unitDef, unitHp);
 
-        String[] input = {name, att, def, hp};
-        return this.input = input;
+        return userInput;
     }
 
-    void user_print(String[] input) {
+    void userPrint(String[] input) {
 
         System.out.println("\n생성된 유닛 정보는 다음과 같습니다.");
         System.out.println(input[0] + " 유짓이 게임에 참여하였습니다.");
@@ -51,7 +52,7 @@ public class Users {
     }
 
 
-    int[] user_info_int(String[] strs) {
+    int[] userInfoInt(String[] strs) {
         int[] chstrs = new int[3];
 
         for (int i = 0; i <= 2; i++) {
@@ -66,7 +67,7 @@ public class Users {
 
     public int[] list() {
         int[] list = new int[3];
-        list = user_info_int(input);
+        list = userInfoInt(input);
 
         return list;
     }

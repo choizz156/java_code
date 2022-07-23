@@ -1,9 +1,8 @@
 class User1 extends Users {
-    String[] user_info;
+    String[] userInfo = new String[4];
     public void infom() {
-        String[] user_info = new String[4];
-        user_info = user_create();
-        user_print(user_info);
+        userInfo = userCreate();
+        userPrint(userInfo);
     }
 
 
