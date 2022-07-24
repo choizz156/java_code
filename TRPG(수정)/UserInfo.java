@@ -1,38 +1,44 @@
 import java.util.Scanner;
 
-public class Users {
+public class UserInfo {
     String name;
-    String att;
-    String def;
+    String attack;
+    String defence;
     String hp;
     String[] input;
+    String[] userChoice;
 
-    void userInfo(String name, String att, String def, String hp) {
+    public void setUserInfo() {
+        userChoice = userCreate();
+        userPrint(userChoice);
+    }
+
+    void userInfo(String name, String attack, String defence, String hp) {
         this.name = name;
-        this.att = att;
-        this.def = def;
+        this.attack = attack;
+        this.defence = defence;
         this.hp = hp;
-        String[] userInput = {name, att, def, hp};
-        this.input = userInput;
+        this.input = new String[]{name, attack, defence, hp};
+
     }
 
     String[] userCreate() {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("유닛 이름을 입력해 주세요.");
+        System.out.print("유닛 이름을 입력해 주세요. ");
         String unitName = scanner.nextLine();
-        System.out.print("유닛 공격력을 입력해 주세요.");
-        String unitAtt = scanner.nextLine();
-        System.out.print("유닛 방어력을 입력해 주세요.");
-        String unitDef = scanner.nextLine();
-        System.out.print("유닛 체력을 입력해 주세요.");
+        System.out.print("유닛 공격력을 입력해 주세요. ");
+        String unitAttack = scanner.nextLine();
+        System.out.print("유닛 방어력을 입력해 주세요. ");
+        String unitDefence = scanner.nextLine();
+        System.out.print("유닛 체력을 입력해 주세요. ");
         String unitHp = scanner.nextLine();
 
-        String[] userInput = {unitName, unitAtt, unitDef, unitHp};
-        this.userInfo(unitName, unitAtt, unitDef, unitHp);
+        String[] unit = {unitName, unitAttack, unitDefence, unitHp};
+        this.userInfo(unitName, unitAttack, unitDefence, unitHp);
 
-        return userInput;
+        return unit;
     }
 
     void userPrint(String[] input) {
@@ -46,59 +52,34 @@ public class Users {
 
     }
 
-    int[] userInfoInt(String[] strs) {
-        int[] chstrs = new int[3];
+    public int[] getUnitInfo(String[] str) {
+        int[] unitInfo = new int[3];
 
         for (int i = 0; i <= 2; i++) {
-            chstrs[i] =
-                    Integer.parseInt(strs[i + 1]);
+            unitInfo[i] =
+                    Integer.parseInt(str[i + 1]);
         }
-        return chstrs;
+        return unitInfo;
     }
 
-    public int[] list() {
-        int[] list = new int[3];
-        list = userInfoInt(input);
-
-        return list;
-    }
-
-    int attack(int[] myinfo, int[] enemyinfo) {
+    public int attacked(int[] firstUnit, int[] secondUnit) {
 
         String unitName = this.name;
 
-        if (enemyinfo[2] > 0) {
-            System.out.println(unitName + "유닛이 공격하였습니다.");
-            enemyinfo[2] = enemyinfo[2] - (myinfo[0] / enemyinfo[1]); // 적군 체력
-            int a = (int) Math.floor(enemyinfo[2]);
-            if (a <= 0) {
-                System.out.println("상대 유닛의 남은 체력은 0입니다.");
-                System.out.println("상대 유닛이 죽었습니다.");
+        if (secondUnit[2] > 0) {
+            System.out.println(unitName + " 유닛이 공격하였습니다.");
+            secondUnit[2] = secondUnit[2] - (firstUnit[0] / secondUnit[1]); // 적군 체력
+
+            if (secondUnit[2] <= 0) {
+                System.out.println("적 유닛의 남은 체력은 0입니다.");
+                System.out.println("유닛이 죽었습니다.");
                 return 0;
             }
-            System.out.println("상대 유닛의 남은 체력은" + enemyinfo[2] + "입니다.");
+            System.out.println("적 유닛의 남은 체력은" + secondUnit[2] + "입니다.");
             System.out.println("-----------------------");
 
         }
-        return enemyinfo[2];
+        return secondUnit[2];
     }
 
-    int attack2(int[] myinfo, int[] enemyinfo) {
-
-        String unitName = this.name;
-
-        if (myinfo[2] > 0) {
-            System.out.println("적 " + unitName + " 유닛이 공격하였습니다.");
-            myinfo[2] = myinfo[2] - (enemyinfo[0] / myinfo[1]);
-            int a = (int) Math.floor(myinfo[2]);
-            if (a < 0) {
-                System.out.println("나의 남은 체력은 0입니다.");
-                System.out.println("나 유닛이 죽었습니다.");
-                return 0;
-            }
-            System.out.println("나의 유닛의 남은 체력은" + myinfo[2] + "입니다.");
-            System.out.println("-----------------------");
-        }
-        return myinfo[2];
-    }
 }
